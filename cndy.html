@@ -1,0 +1,486 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>House of Candy | New Arrivals</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* ================= BODY BACKGROUND ================= */
+body {
+    background: 
+        linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+        url("choo.png");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: white;
+    overflow-x: hidden;
+}
+
+/* ================= NAVBAR ================= */
+header {
+    position: sticky;
+    top: 0;
+    background: rgba(255,255,255,0.95);
+    z-index: 1000;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+}
+
+.top-bar {
+    background: #ff2f92;
+    color: white;
+    text-align: center;
+    padding: 8px;
+    font-size: 14px;
+}
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 60px;
+}
+
+.logo {
+    font-size: 30px;
+    font-weight: 700;
+    color: #ff2f92;
+}
+
+.menu {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+}
+
+.menu a {
+    text-decoration: none;
+    color: #222;
+    font-weight: 600;
+}
+
+.menu a:hover {
+    color: #ff2f92;
+}
+
+/* ================= DROPDOWN MENU (ADDED) ================= */
+.menu li {
+    position: relative;
+}
+
+.dropdown {
+    position: absolute;
+    top: 35px;
+    left: 0;
+    background: white;
+    min-width: 180px;
+    border-radius: 10px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    display: none;
+    flex-direction: column;
+    overflow: hidden;
+    z-index: 999;
+}
+
+.dropdown a {
+    padding: 12px 16px;
+    color: #222;
+    font-size: 14px;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.dropdown a:hover {
+    background: #ff2f92;
+    color: white;
+}
+
+.menu li:hover .dropdown {
+    display: flex;
+}
+
+/* ================= TITLE ================= */
+.title {
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.title h1 {
+    font-size: 42px;
+    color: #ff2f92;
+}
+
+.title p {
+    color: #eee;
+    font-size: 18px;
+}
+
+/* ================= PRODUCTS ================= */
+.products {
+    padding: 40px 60px 80px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 20px;
+}
+
+.product {
+    background: rgba(255,255,255,0.95);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    transition: transform 0.4s;
+    text-align: center;
+}
+
+.product:hover {
+    transform: translateY(-8px);
+}
+
+.product img {
+    width: 80px;
+    margin: 15px auto 5px;
+    display: block;
+}
+
+.product-content {
+    padding: 10px;
+}
+
+.product h3 {
+    font-size: 14px;
+    color: #222;
+}
+
+.price {
+    margin: 4px 0;
+    font-weight: 700;
+    color: #ff2f92;
+}
+
+.btn {
+    display: inline-block;
+    margin-top: 6px;
+    padding: 6px 18px;
+    background: linear-gradient(45deg,#ff2f92,#ff86c5);
+    color: white;
+    border-radius: 20px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 12px;
+}
+
+/* ================= DETAILS OVERLAY ================= */
+.overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.7);
+    display: none;
+    z-index: 999;
+}
+
+.overlay:target {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.details {
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    max-width: 350px;
+    width: 90%;
+    animation: popup 0.6s ease;
+    color: #222;
+    position:relative;
+    
+}
+
+@keyframes popup {
+    from { transform: scale(0.85); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+.details h2 {
+    color: #ff2f92;
+    margin-bottom: 8px;
+    font-size: 18px;
+}
+
+.details ul {
+    line-height: 1.8;
+    padding-left: 18px;
+}
+
+.close {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 6px 18px;
+    background: #ff2f92;
+    color: white;
+    border-radius: 15px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 12px;
+}
+.cart {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    padding: 6px 18px;
+    background: #ff2f92;
+    color: white;
+    border-radius: 15px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 12px;
+    }
+    .actions{
+  display:flex;
+  justify-content:space-between;
+  margin-top:20px;}
+
+
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="top-bar">FREE SHIPPING ABOVE ₹999 🍬</div>
+
+    <div class="nav">
+        <div class="logo">House of Candy</div>
+        <ul class="menu">
+            <li><a href="#">New Arrivals</a></li>
+
+            <li>
+                <a href="#">Chocolates</a>
+                <div class="dropdown">
+                    <a href="#">Milk Chocolates</a>
+                    <a href="#">Dark Chocolates</a>
+                    <a href="#">Filled Chocolates</a>
+                    <a href="#">Chocolate Rocks</a>
+                    <a href="#">Sugar Free</a>
+                </div>
+            </li>
+
+            <li>
+                <a href="#">Gummies</a>
+                <div class="dropdown">
+                    <a href="#">Fruit Gummies</a>
+                    <a href="#">Sour Gummies</a>
+                    <a href="#">Vitamin Gummies</a>
+                    <a href="#">Kids Gummies</a>
+                </div>
+            </li>
+
+            <li>
+                <a href="#">Lollipops</a>
+                <div class="dropdown">
+                    <a href="#">Fruit Pops</a>
+                    <a href="#">Sour Pops</a>
+                    <a href="#">Candy Canes</a>
+                </div>
+            </li>
+
+            <li>
+                <a href="#">Gifting</a>
+                <div class="dropdown">
+                    <a href="#">Gift Boxes</a>
+                    <a href="#">Custom Hampers</a>
+                    <a href="#">Festival Specials</a>
+                    <a href="#">Corporate Gifts</a>
+                </div>
+            </li>
+
+            <li>
+                <a href="#">Cart</a>
+                <div class="dropdown">
+                    <a href="#">My Cart</a>
+                    <a href="#">Saved for Later</a>
+                    <a href="#">Apply Coupon</a>
+                    <a href="#">Checkout</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+</header>
+
+<section class="title">
+    <h1>New Arrivals</h1>
+    <p>Fresh & trending candies you’ll love 🍭</p>
+</section>
+
+<section class="products">
+    <div class="product">
+        <img src="rainbow.png" alt="Sour Rainbow Belts">
+        <div class="product-content">
+            <h3>Sour Rainbow Belts</h3>
+            <div class="price">₹299</div>
+            <a href="#c1" class="btn">View Details</a>
+            
+        </div>
+    </div>
+
+    <div class="product">
+        <img src="mushmello.png" alt="Strawberry Gummies">
+        <div class="product-content">
+            <h3>Strawberry Gummies</h3>
+            <div class="price">₹349</div>
+            <a href="#c2" class="btn">View Details</a>
+            
+        </div>
+    </div>
+
+    <div class="product">
+        <img src="rocks.png" alt="Chocolate Rocks">
+        <div class="product-content">
+            <h3>Chocolate Rocks</h3>
+            <div class="price">₹499</div>
+            <a href="#c3" class="btn">View Details</a>
+            
+        </div>
+    </div>
+        <div class="product">
+        <img src="rocket copy.png" alt="Chocolate Rocks">
+        <div class="product-content">
+            <h3>Rocket Candy</h3>
+            <div class="price">₹599</div>
+            <a href="#c3" class="btn">View Details</a>
+            
+        </div>
+    </div>
+        <div class="product">
+        <img src="ziggy.png" alt="Chocolate Rocks">
+        <div class="product-content">
+            <h3>Zingy Zap Candies</h3>
+            <div class="price">₹699</div>
+            <a href="#c3" class="btn">View Details</a>
+           
+        </div>
+    </div>
+        <div class="product">
+        <img src="cndyb.png" alt="Chocolate Rocks">
+        <div class="product-content">
+            <h3>candy bracelet</h3>
+            <div class="price">₹799</div>
+            <a href="#c3" class="btn">View Details</a>
+            
+        </div>
+    </div>
+        <div class="product">
+        <img src="caramels.png" alt="Chocolate Rocks">
+        <div class="product-content">
+            <h3>caramels</h3>
+            <div class="price">₹899</div>
+            <a href="#c3" class="btn">View Details</a>
+            
+        </div>
+    </div>
+        <div class="product">
+        <img src="hard.png" alt="Chocolate Rocks">
+        <div class="product-content">
+            <h3>Hard Candies</h3>
+            <div class="price">₹999</div>
+            <a href="#c3" class="btn">View Details</a>
+            
+        </div>
+    </div>
+        <div class="product">
+        <img src="diary.png" alt="Chocolate Rocks">
+        <div class="product-content">
+            <h3>Diarymilk</h3>
+            <div class="price">₹399</div>
+            <a href="#c3" class="btn">View Details</a>
+            
+        </div>
+    </div>
+        <div class="product">
+        <img src="lava.png" alt="Chocolate Rocks">
+        <div class="product-content">
+            <h3>Chocolava</h3>
+            <div class="price">₹399</div>
+            <a href="#c3" class="btn">View Details</a>
+            
+        </div>
+    </div>
+        <div class="product">
+        <img src="brownie.png" alt="Chocolate Rocks">
+        <div class="product-content">
+            <h3>Browinies</h3>
+            <div class="price">₹399</div>
+            <a href="#c3" class="btn">View Details</a>
+            
+        </div>
+    </div>
+        <div class="product">
+        <img src="donuts.png" alt="Chocolate Rocks">
+        <div class="product-content">
+            <h3>Donuts</h3>
+            <div class="price">₹399</div>
+            <a href="#c3" class="btn">View Details</a>
+            
+        </div>
+    </div>
+</section>
+
+<div id="c1" class="overlay">
+    <div class="details">
+        <h2>Sour Rainbow Belts</h2>
+        <div class="price">₹299</div>
+        <ul>
+            <li>Sugar</li>
+            <li>Glucose Syrup</li>
+            <li>Citric Acid</li>
+            <li>Food Colours</li>
+        </ul>
+        <a href="#" class="close">Close</a>
+        <a href="#" class="close">Add to cart</a>
+    </div>
+</div>
+
+<div id="c2" class="overlay">
+    <div class="details">
+        <h2>Strawberry Gummies</h2>
+        <div class="price">₹349</div>
+        <ul>
+            <li>Gelatin</li>
+            <li>Fruit Extract</li>
+            <li>Sugar</li>
+            <li>Natural Colours</li>
+        </ul>
+        <a href="#" class="close">Close</a>
+        <a href="#" class="close">Add to cart</a>
+    </div>
+</div>
+
+<div id="c3" class="overlay">
+    <div class="details">
+        <h2>Chocolate Rocks</h2>
+        <div class="price">₹399</div>
+        <ul>
+            <li>Cocoa Solids</li>
+            <li>Milk Powder</li>
+            <li>Soy Lecithin</li>
+            <li>Sugar</li>
+        </ul>
+
+       
+    </div>
+    <div class="actions">
+    <a href="#" class="close">Close</a>
+        <a href="#" class="cart">Add to cart</a>
+</div>
+</body>
+</html>
